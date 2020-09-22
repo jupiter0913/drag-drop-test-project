@@ -21,34 +21,36 @@
         <div class="col-md-12" v-for="(expand, index) in expands" :key="index">
           <div class="row align-items-start mt-1 mb-1">
             <template v-if="expand === false">
-              <b-button size="sm" @click="expandEvent(expand, index)">
+              <b-button class="mt-3" size="sm" @click="expandEvent(expand, index)">
                 <b-icon icon="plus"></b-icon>
               </b-button>
             </template>
             <template v-else>
-              <b-button size="sm" @click="expandEvent(expand, index)">
+              <b-button class="mt-3" size="sm" @click="expandEvent(expand, index)">
                 <b-icon icon="dash"></b-icon>
               </b-button>
             </template>
             <div v-show="expand">
-              <div
-                class="row mx-3"
-                v-for="(singleRowData, rowIndex) in CardJsonData[index]"
-                :key="rowIndex"
+              <draggable
+                v-model="CardJsonData1"
+                style="display: flex; justify-content: flex-start; flex-wrap: wrap"
               >
                 <div
-                  class="col-md-2 mb-1 mx-2 p-0"
-                  v-for="(singleCellData, cellIndex) in singleRowData"
-                  :key="cellIndex"
+                  class="draggableCardContent"
+                  v-for="(element, index) in CardJsonData1"
+                  :key="index"
                 >
-                  <draggable>
-                    <div
-                      class="draggableCard"
-                      @click="clickCard"
-                    >{{singleCellData.title}}{{singleCellData.description}}</div>
-                  </draggable>
+                  <div class="row pl-2 pr-2 w-100">
+                    <div class="col-md-3 pr-2 pl-2">
+                      <img class="avatar" :src="require(`~/assets/images/${element.avatar}`)" alt />
+                    </div>
+                    <div class="col-md-9 pr-2 pl-2">
+                      <div>{{element.title}}</div>
+                      <div>{{element.description}}</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </draggable>
             </div>
           </div>
         </div>
@@ -75,9 +77,16 @@ export default {
     expands: [],
     totalExpand: true,
     CardJsonData: [],
+    CardJsonData1: [],
+    CardJsonData2: [],
+    CardJsonData3: [],
   }),
   mounted() {
     this.CardJsonData = CardJsonData;
+    this.CardJsonData1 = CardJsonData[0].data;
+    this.CardJsonData2 = CardJsonData[1].data;
+    this.CardJsonData3 = CardJsonData[2].data;
+    console.log(this.CardJsonData1);
     for (var i = 0; i < this.CardJsonData.length; i++) {
       this.expands.push(true);
     }
@@ -95,29 +104,30 @@ export default {
       }
     },
     expandEvent(expand, index) {
+      console.log(expand, index);
       var tempExpands = this.expands;
-      this.expands= [];
-      for(var i=0; i< tempExpands.length; i++) {
-        if(i === index ){
+      this.expands = [];
+      for (var i = 0; i < tempExpands.length; i++) {
+        if (i === index) {
           if (expand === true) {
             this.expands[i] = false;
           } else {
             this.expands[i] = true;
           }
-        }else {
-          this.expands[i] = tempExpands[i]
+        } else {
+          this.expands[i] = tempExpands[i];
         }
       }
-      for (i = 0; i<this.expands.length; i++) {
-        if(this.expands[i] === true) {
-          this.totalExpand = true
+      for (i = 0; i < this.expands.length; i++) {
+        if (this.expands[i] === true) {
+          this.totalExpand = true;
         } else {
-          this.totalExpand = false
+          this.totalExpand = false;
         }
       }
     },
     clickCard() {
-      this.$router.push({path: '/Card'});
+      this.$router.push({ path: "/Card" });
     },
   },
 };
