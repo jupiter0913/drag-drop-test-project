@@ -15,9 +15,9 @@
                 <li @click="closeMenu">
                   <nuxt-link :to="{ path: '/' }">Home</nuxt-link>
                 </li>
-                <li @click="closeMenu">
+                <!-- <li @click="closeMenu">
                   <nuxt-link :to="{ path: '/Card' }">Card</nuxt-link>
-                </li>                
+                </li>                 -->
               </ul>
             </nav>
           </div>

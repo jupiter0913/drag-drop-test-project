@@ -31,26 +31,75 @@
               </b-button>
             </template>
             <div v-show="expand">
-              <draggable
-                v-model="CardJsonData1"
-                style="display: flex; justify-content: flex-start; flex-wrap: wrap"
-              >
-                <div
-                  class="draggableCardContent"
-                  v-for="(element, index) in CardJsonData1"
-                  :key="index"
+              <div v-if="index===0">
+                <draggable
+                  v-model="CardJsonData1"
+                  style="display: flex; justify-content: flex-start; flex-wrap: wrap"
                 >
-                  <div class="row pl-2 pr-2 w-100">
-                    <div class="col-md-3 pr-2 pl-2">
-                      <img class="avatar" :src="require(`~/assets/images/${element.avatar}`)" alt />
-                    </div>
-                    <div class="col-md-9 pr-2 pl-2">
-                      <div>{{element.title}}</div>
-                      <div>{{element.description}}</div>
+                  <div
+                    class="draggableCardContent"
+                    v-for="(element, index) in CardJsonData1"
+                    :key="index"
+                    @click="clickCard"
+                  >
+                    <div class="row pl-2 pr-2 w-100">
+                      <div class="col-md-3 pr-2 pl-2">
+                        <img class="avatar" :src="require(`~/assets/images/${element.avatar}`)" alt />
+                      </div>
+                      <div class="col-md-9 pr-2 pl-2">
+                        <div>{{element.title}}</div>
+                        <div>{{element.description}}</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </draggable>
+                </draggable>
+              </div>
+              <div v-else-if="index===1">
+                <draggable
+                  v-model="CardJsonData2"
+                  style="display: flex; justify-content: flex-start; flex-wrap: wrap"
+                >
+                  <div
+                    class="draggableCardContent"
+                    v-for="(element, index) in CardJsonData2"
+                    :key="index"
+                    @click="clickCard"
+                  >
+                    <div class="row pl-2 pr-2 w-100">
+                      <div class="col-md-3 pr-2 pl-2">
+                        <img class="avatar" :src="require(`~/assets/images/${element.avatar}`)" alt />
+                      </div>
+                      <div class="col-md-9 pr-2 pl-2">
+                        <div>{{element.title}}</div>
+                        <div>{{element.description}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </draggable>
+              </div>
+              <div v-else>
+                <draggable
+                  v-model="CardJsonData3"
+                  style="display: flex; justify-content: flex-start; flex-wrap: wrap"
+                >
+                  <div
+                    class="draggableCardContent"
+                    v-for="(element, index) in CardJsonData3"
+                    :key="index"
+                    @click="clickCard"
+                  >
+                    <div class="row pl-2 pr-2 w-100">
+                      <div class="col-md-3 pr-2 pl-2">
+                        <img class="avatar" :src="require(`~/assets/images/${element.avatar}`)" alt />
+                      </div>
+                      <div class="col-md-9 pr-2 pl-2">
+                        <div>{{element.title}}</div>
+                        <div>{{element.description}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </draggable>
+              </div>
             </div>
           </div>
         </div>
