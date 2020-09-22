@@ -69,3 +69,9 @@ body.openNav .mobileNavBtn span {background: var(--blue);}
     .openNav .middle {transform: translateX(-310px);}
     .openNav .overLay {display: block; position: fixed; top: 0px; left: 0px;width: 100%;height: 100%;background: rgba(0,0,0,0.5);}
     .openNav .navigation>ul {opacity: 1;transform: scaleY(1);}
+
+    .draggableCard {
+      border: 2px solid grey;
+      background-color: var(--blue);
+      cursor: pointer;
+    }
