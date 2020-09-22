@@ -1,0 +1,71 @@
+/* tt_normslight tt_normsregular tt_normsmedium  tt_normsblack tt_normsbold*/
+
+:root {
+  --blue: #0092ff;
+  --darkBlue: #0d42a6;
+}
+
+button:focus, input:focus {outline: none;}
+body {font-size:14px; font-family: 'tt_normsregular';}
+img {max-width: 100%;}
+.top_container {margin-right: 15px; height: 30px;}
+.container {max-width: 1200px; position: relative; margin-top: 30px;}
+
+.logo a {display: inline-block;max-width: 100%;}
+.logo .blue {display: none;}
+.header {padding: 10px 0px;position: fixed;left:0px;top:0px;width:100%;z-index: 11;display: block;transition: top 0.6s;}
+.headerFix {background:#fff;box-shadow: 0px 0px 5px #0c6d4740; transition: all .3s linear;}
+.headerFix .logo img {max-height:60px;margin: -1px 0px -7px 0px;} //-10px 0px;}
+.headerFix .blue {display:block;}
+.headerFix .white {display:none;}
+
+
+.blueBtn {background: var(--blue); color:#ffffff; padding:11px 30px 11px 30px; display: inline-block; font-family: 'tt_normsmedium'; font-size: 16px; text-decoration: none; border-radius: 5px; border:none; cursor: pointer; height: 50px; vertical-align: top;}
+.blueBtn .arrow {display: inline-block; height: 16px; width:22px; background: url('../images/sprite.png') no-repeat -1px -29px;vertical-align: middle; position: relative; right: -5px;}
+.blueBtn:hover .arrow {animation:btnarrow 0.3s linear; }
+.blueBtn:hover {text-decoration: none;background:#007dda; color: #ffffff;}
+@keyframes btnarrow {
+	0% {right: -5px;}
+	50% {right: -1px;}
+	100% {right: -5px;}
+}
+
+.headerBlockC .blueBtn {margin-left: 10px;}
+.headerBlockC .callBtn {background: #fc7754;padding: 10px 14px 11px 19px;} 
+.headerBlockC .callBtn:hover {background: #e35f3d;} 
+.callBtn .call {width: 23px; height: 23px; display: inline-block; background: url(../images/sprite.png) no-repeat 0px -104px;vertical-align: middle;}
+
+.mainNav {position: relative;}
+.mobileNavBtn:focus {outline: none;box-shadow: none;}
+.mobileNavBtn {display: none; border: none; cursor: pointer; margin-top: 1px; float:right;
+    width: 22px; height: 18px;border-radius: 0px; background: none; position: relative; z-index: 101;}
+.mobileNavBtn span { width: 100%; left: 0px; top: 7px; height: 2px; background: #0b4cb2; position: absolute; transition: all 0.3s linear;}
+.mobileNavBtn span:nth-child(2) {top: 0px;}
+.mobileNavBtn span:nth-child(3) {top: 14px;}
+.headerFix .mobileNavBtn span {background: var(--darkBlue);}
+.openNav {overflow: hidden;}
+body.openNav .mobileNavBtn span {background: var(--blue);}
+.headerFix .mobileNavBtn span{background: var(--blue);}
+.openNav .mobileNavBtn span:nth-child(2){display: none;}
+.openNav .mobileNavBtn span:nth-child(1){transform:rotate(45deg)}
+.openNav .mobileNavBtn span:nth-child(3){transform:rotate(-45deg); top: 7px;}
+
+	.headerFix .logo img {max-height:40px;margin: -8px 0px;}
+	.headerBlockB {max-width: 100%; flex-grow: 1;}
+	.mobileNavBtn {display: block;}
+	.headerBlockC {display: none;}
+	
+	.navMain {text-align: right; position: relative;margin: 7px 15px 3px 0px;display: inline-block;width: 100%;}
+    .navigation {position: fixed; right: 0px; top: 0px;width:100%;bottom: 0px;
+    	background:#ffffff url('../images/menu-bg.svg') no-repeat bottom 100px right; z-index: 100; max-height: 100%; overflow-y: auto;
+    	right: -110%; transition: right .75s cubic-bezier(.77,0,.175,1); text-transform: uppercase; max-width: 310px;}
+    .navigation:before {content: "";position: absolute; left: 0px; bottom: 0px; height: 100px;width: 100%; background:#0b4cb2;}
+    .openNav .navigation {right: 0px;}	
+    .navigation>ul {margin: 0px; padding:50px 0px 100px 0px; list-style: none; font-size: 1rem;     transform: scaleY(0.8); transform-origin: top; opacity: 0; transition: all 0.3s linear 0.7s;}
+    .navigation>ul>li {width: 100%; text-align: left;    font-weight: bold; }
+    .navigation>ul>li>a {padding:12px 40px 12px 20px; display: block; color: #333;}
+
+    .middle {transition: transform .75s cubic-bezier(.77,0,.175,1);position: relative;}
+    .openNav .middle {transform: translateX(-310px);}
+    .openNav .overLay {display: block; position: fixed; top: 0px; left: 0px;width: 100%;height: 100%;background: rgba(0,0,0,0.5);}
+    .openNav .navigation>ul {opacity: 1;transform: scaleY(1);}
